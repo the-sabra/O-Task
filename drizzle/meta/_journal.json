@@ -1,0 +1,34 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1693875426410,
+      "tag": "0000_rich_gamora",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1693878868378,
+      "tag": "0001_puzzling_puma",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1694017566272,
+      "tag": "0002_flat_grey_gargoyle",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1694017596150,
+      "tag": "0003_wonderful_grey_gargoyle",
+      "breakpoints": true
+    }
+  ]
+}
