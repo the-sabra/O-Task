@@ -23,6 +23,7 @@ async function startServer() {
   const server = new ApolloServer({
     schema,
     context: ({ req }: any) => ({ req }),
+    introspection: true,
   });
 
   // Start the Apollo Server first
