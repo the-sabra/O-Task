@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node ./dist/app.js",
+    "start": "node dist/app.js",
     "build": "tsc",
     "dev": "nodemon ./src/app.ts",
     "db:generate": "drizzle-kit generate:pg",

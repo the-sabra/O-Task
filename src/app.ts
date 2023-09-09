@@ -8,6 +8,8 @@ import { customAuthChecker } from "./decorator/AuthChecker";
 import TaskResolver from "./resolver/task";
 import UserResolver from "./resolver/user";
 
+const PORT = process.env.PORT || 4000;
+
 async function startServer() {
   const app = express();
 
@@ -29,8 +31,8 @@ async function startServer() {
   // Apply middleware after starting the server
   server.applyMiddleware({ app });
 
-  app.listen({ port: 4000 }, () =>
-    console.log(`Server is running at http://localhost:4000/graphql`)
+  app.listen({ port: PORT }, () =>
+    console.log(`Server is running at http://localhost:${PORT}/graphql`)
   );
 }
 
