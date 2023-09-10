@@ -22,9 +22,7 @@ async function startServer() {
 
   const server = new ApolloServer({
     schema,
-    introspection: true,
     persistedQueries: false,
-    cache: "bounded",
     context: ({ req }: any) => ({ req }),
   });
 
