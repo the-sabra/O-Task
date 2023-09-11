@@ -4,6 +4,7 @@ import * as tasks from "./Entities/task";
 
 const client = new Client({
   connectionString: process.env.DATABASE_URL,
+  ssl: true,
 });
 
 client.connect();

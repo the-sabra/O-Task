@@ -1,0 +1,59 @@
+type Task {
+  id: ID!
+  title: String!
+  description: String
+  status: String!
+  parent_id: Float
+  childTasks: [Task!]
+  createdAt: DateTime!
+}
+
+type User {
+  id: ID!
+  email: String!
+  name: String!
+  createdAt: DateTime
+  token: String
+}
+
+"""
+The javascript `Date` as string. Type represents date and time as the ISO Date string.
+"""
+scalar DateTime
+
+type Query {
+  tasks: [Task!]!
+  getTask(id: String!): [Task!]!
+  checkDone(id: String!): Task!
+  search(Query: String!): [Task!]!
+}
+type Mutation {
+  createTask(taskData: NewTaskInput!): Task!
+  updateTask(edits: UpdateTaskInput!, id: String!): Task!
+  deleteTask(id: String!): Task!
+  signUp(data: NewUserInput!): User!
+  signIn(data: SignInInput!): User!
+}
+
+input NewTaskInput {
+  title: String!
+  description: String
+  parent_id: Float
+}
+
+input UpdateTaskInput {
+  title: String
+  description: String
+  parent_id: Float
+}
+
+input NewUserInput {
+  email: String!
+  password: String!
+  name: String!
+}
+
+input SignInInput {
+  email: String!
+  password: String!
+}
