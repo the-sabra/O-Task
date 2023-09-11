@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import "dotenv/config";
-import express from "express";
-import cors from "cors";
+import * as Express from "express";
+import * as cors from "cors";
 import { ApolloServer } from "apollo-server-express";
 import { buildSchema } from "type-graphql";
 import { customAuthChecker } from "./decorator/AuthChecker";
@@ -11,10 +11,6 @@ import UserResolver from "./resolver/user";
 const PORT = process.env.PORT || 4000;
 
 async function startServer() {
-  const app = express();
-
-  app.use(cors());
-
   const schema = await buildSchema({
     resolvers: [UserResolver, TaskResolver],
     authChecker: customAuthChecker,
@@ -26,13 +22,15 @@ async function startServer() {
     context: ({ req }: any) => ({ req }),
   });
 
-  // Start the Apollo Server first
-  await server.start();
+  const app = Express();
 
+  app.use(cors());
+
+  await server.start();
   // Apply middleware after starting the server
   server.applyMiddleware({ app });
 
-  app.listen({ port: PORT }, () =>
+  app.listen(PORT, () =>
     console.log(`Server is running at http://localhost:${PORT}/graphql`)
   );
 }

@@ -1,12 +1,9 @@
-import jwt from "jsonwebtoken";
+import * as jwt from "jsonwebtoken";
 import { AuthenticationError } from "apollo-server-express";
 import { AuthChecker } from "type-graphql";
-import { MyContext } from "types/MyContext";
+import { MyContext } from "src/types/MyContext";
 
-export const customAuthChecker: AuthChecker<MyContext> = (
-  { root, args, context, info },
-  roles
-) => {
+export const customAuthChecker: AuthChecker<MyContext> = ({ context }) => {
   // Read user from context
   // and check the user's permission against the `roles` argument
   // that comes from the '@Authorized' decorator, eg. ["ADMIN", "MODERATOR"]

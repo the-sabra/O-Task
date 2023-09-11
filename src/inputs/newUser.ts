@@ -1,5 +1,4 @@
 import {
-  IS_ALPHANUMERIC,
   IsAlphanumeric,
   IsEmail,
   Length,

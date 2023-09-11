@@ -1,6 +1,4 @@
 import {
-  IS_ALPHANUMERIC,
-  IsAlphanumeric,
   IsEmail,
   Length,
 } from "class-validator";

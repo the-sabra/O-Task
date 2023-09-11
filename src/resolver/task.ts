@@ -15,12 +15,12 @@ import { tasks, Tasks } from "../db/Entities/task";
 import { db } from "../db/DBClient";
 import { NewTaskInput } from "../inputs/newTask";
 import { UpdateTaskInput } from "../inputs/updateTask";
-import { MyContext } from "types/MyContext";
+import { MyContext } from "src/types/MyContext";
 import { ApolloError } from "apollo-server-express";
 
 @Resolver(Task)
 class TaskResolver {
-  @Query((returns) => [Task])
+  @Query((_returns) => [Task])
   @Authorized()
   async tasks(@Ctx() context: MyContext) {
     let result: any = await db
@@ -29,7 +29,7 @@ class TaskResolver {
       .where(eq(tasks.userId, context.req.userId));
     return result;
   }
-  @Query((returns) => [Task])
+  @Query((_returns) => [Task])
   @Authorized()
   async getTask(@Arg("id") id: string, @Ctx() context: MyContext) {
     const result = await db
@@ -39,7 +39,7 @@ class TaskResolver {
     return result;
   }
 
-  @Query((returns) => Task)
+  @Query((_returns) => Task)
   @Authorized()
   async checkDone(@Arg("id") id: string, @Ctx() context: MyContext) {
     const doneTask = await db
@@ -62,7 +62,7 @@ class TaskResolver {
     return childTasks;
   }
 
-  @Query((returns) => [Task])
+  @Query((_returns) => [Task])
   @Authorized()
   async search(
     @Arg("Query") query: string,
@@ -83,7 +83,7 @@ class TaskResolver {
     return searchedTasks;
   }
   //creating Task
-  @Mutation((returns) => Task)
+  @Mutation((_returns) => Task)
   @Authorized()
   async createTask(
     @Arg("taskData") taskData: NewTaskInput,
@@ -95,7 +95,7 @@ class TaskResolver {
   }
 
   //updating Task
-  @Mutation((returns) => Task)
+  @Mutation((_returns) => Task)
   @Authorized()
   async updateTask(
     @Arg("id") id: string,
@@ -120,7 +120,7 @@ class TaskResolver {
     return updatedTask[0];
   }
 
-  @Mutation((returns) => Task)
+  @Mutation((_returns) => Task)
   @Authorized()
   async deleteTask(@Arg("id") id: string, @Ctx() context: MyContext) {
     const checkUserCreatedTask = await db

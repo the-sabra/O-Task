@@ -1,5 +1,5 @@
 import * as bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
+import * as jwt from "jsonwebtoken";
 import { User } from "../schema/userQSchema";
 import NewUserInput from "../inputs/newUser";
 import { Mutation, Resolver, Arg } from "type-graphql";
@@ -12,7 +12,7 @@ import { ApolloError } from "apollo-server-express";
 @Resolver(User)
 class UserResolver {
   
-  @Mutation((returns) => User)
+  @Mutation((_returns) => User)
   async signUp(@Arg("data") newUser: NewUserInput): Promise<User> {
     try {
       console.log(newUser);
@@ -47,7 +47,7 @@ class UserResolver {
     }
   }
 
-  @Mutation((returns) => User)
+  @Mutation((_returns) => User)
   async signIn(@Arg("data") userSignIn: SignInInput): Promise<User> {
     const user = await db
       .select()
