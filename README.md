@@ -39,7 +39,7 @@ I developed this project to challenge myself and add new features. The project i
 
 - Authentication with JSON Web Token (JWT).
 - Search functionality.
-- Push notifications (coming soon).
+
 
 To learn more about the schema, you can refer to [SCHEMA](O-task.graphql).
 
